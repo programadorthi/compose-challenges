@@ -1,0 +1,58 @@
+import dev.programadorthi.Dependencies
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "dev.programadorthi.fileuploadanimation"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Dependencies.AndroidX.Compose.version
+        kotlinCompilerVersion Dependencies.Kotlin.version
+    }
+}
+
+dependencies {
+
+    implementation Dependencies.AndroidX.appcompat
+    implementation Dependencies.AndroidX.coreKtx
+    implementation Dependencies.AndroidX.material
+    implementation Dependencies.AndroidX.Activity.activityCompose
+    implementation Dependencies.AndroidX.Compose.material
+    implementation Dependencies.AndroidX.Compose.ui
+    implementation Dependencies.AndroidX.Compose.uiTooling
+    implementation Dependencies.AndroidX.Lifecycle.runtime
+    testImplementation Dependencies.Test.junit
+    androidTestImplementation Dependencies.Test.junitAndroidX
+    androidTestImplementation Dependencies.Test.espressoCore
+}
