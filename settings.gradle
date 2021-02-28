@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Challenges"
 include ':fileuploadanimation'
+include ':iosloadingindicator'
