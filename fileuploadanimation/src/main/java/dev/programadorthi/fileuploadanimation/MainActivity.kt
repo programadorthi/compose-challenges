@@ -24,6 +24,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.res.painterResource
@@ -86,8 +87,8 @@ fun AnimatedContent(
     inProgress: Boolean,
     onClick: () -> Unit
 ) {
-    val boxSize = 150.dp
-    val cloudSize = 90.dp
+    val boxSize = 150.dp * 2
+    val cloudSize = 90.dp * 2
     val halfBoxSize = boxSize / 2
     val halfCloudSize = cloudSize / 2
 
@@ -240,7 +241,7 @@ fun RightCloud(
 
 @Composable
 fun Arrow(halfBoxSize: Dp, inProgress: Boolean) {
-    val targetValue = halfBoxSize - 15.dp
+    val targetValue = halfBoxSize * 0.9f
     val yPosAnim = remember {
         Animatable(initialValue = targetValue, typeConverter = Dp.VectorConverter)
     }
@@ -263,8 +264,8 @@ fun Arrow(halfBoxSize: Dp, inProgress: Boolean) {
         painter = painterResource(id = R.drawable.ic_arrow_up_bold),
         contentDescription = "Arrow up",
         modifier = Modifier
-            .size(50.dp)
-            .offset(x = halfBoxSize - 25.dp, y = yPosAnim.value)
+            .size(halfBoxSize * 0.55f)
+            .offset(x = halfBoxSize * 0.75f, y = yPosAnim.value)
     )
 }
 
